@@ -16,10 +16,10 @@ type searchQuery = {
 
 export default async function page({searchParams}: searchQuery) {
     const data = await getDrillData({q:searchParams.q});
-    console.log(data);
+    // console.log(data);
     return(
         <>
-            <h1>search123</h1>
+            <h1>drill search</h1>
             <Search></Search>
             {data.contents.map(d => (
                 <>

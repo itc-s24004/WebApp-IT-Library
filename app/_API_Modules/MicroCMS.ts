@@ -34,6 +34,6 @@ export const getDrillData = async (queries?: MicroCMSQueries) => {
     endpoint: "drill",
     queries,
   });
-  console.log(listData)
+//   console.log(listData)
   return listData;
 };
