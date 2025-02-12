@@ -11,6 +11,7 @@ function SearchComponent({path, queryName}: {path: string, queryName: string}) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log(e)
         const q = e.currentTarget.elements.namedItem("q");
         if (q instanceof HTMLInputElement) {
             const params = new URLSearchParams();
@@ -21,14 +22,26 @@ function SearchComponent({path, queryName}: {path: string, queryName: string}) {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="q"
-                    defaultValue={searchParams.get(queryName) ?? undefined}
-                    placeholder="キーワードを入力"
-                />
-            </form>
+            <div className="d-flex justify-content-center">
+                <div className="col-10">
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="q"
+                            defaultValue={searchParams.get(queryName) ?? undefined}
+                            placeholder="🔍キーワードを入力"
+                        />
+                        {/* <input
+                            type="text"
+                            className="form-control"
+                            name="tag"
+                            defaultValue={undefined}
+                            placeholder="タグを入力"
+                        /> */}
+                    </form>
+                </div>
+            </div>
         </>
     );
 }

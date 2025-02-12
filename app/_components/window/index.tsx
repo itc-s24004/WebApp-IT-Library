@@ -1,9 +1,13 @@
 import Border from "@/app/_components/window/border"
 
-import FloatingWindowControl from "@/app/_client/floating_window_control"
+import FloatingWindowControl from "@/app/_client/window_control"
 import Image from "next/image"
 
-import CloseButton from "./border/button/close"
+import CloseButton from "./border/button/close";
+import MinimizeButton from "./border/button/minimize";
+
+
+import Styles from "./index.module.css"
 
 export enum WindowTemplate {
     /**テンプレートを使用しない */
@@ -48,11 +52,12 @@ export default function component({template, id, windowClass, label, children, c
 
     } else if (template == WindowTemplate.floating) {
         return(
-            <div id={id} className="position-fixed" style={windowStyle}>
+            <div id={id} className={`position-fixed ${Styles.window_main}`} style={windowStyle}>
 
                 <Border id={id} label={label||"ウィンドウテキスト"} customStyle={{backgroundColor: "gray", height:"30px"}}>
                     <input type="hidden" name="floating_window"/>
-                    <CloseButton></CloseButton>
+                    <MinimizeButton></MinimizeButton>
+                    {/* <CloseButton></CloseButton> */}
                 </Border>
 
                 <div id={`${id}_window_content`} style={{flex:1, display:"flex"}}>

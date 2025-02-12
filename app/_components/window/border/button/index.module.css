@@ -14,3 +14,10 @@
     background-repeat: no-repeat;
     background-size: 25px;
 }
+
+.minimize {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(/icon_minimize.png);
+    background-repeat: no-repeat;
+    background-size: 25px;
+}

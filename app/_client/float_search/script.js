@@ -84,6 +84,11 @@
         const label = document.getElementById("floating_search_window_label");
 
 
+        const style = frame.parentElement.parentElement.style
+        // style.display = "block";
+        style.opacity = "1";
+        style.pointerEvents = "auto";
+        label.innerText = "検索中..."
         /**
          * @type {import("../../_API_Modules/Wikipedia").WikiSearchResponse}
          */
@@ -101,10 +106,6 @@
 
         frame.src = `https://ja.wikipedia.org/w/index.php?curid=${res.query.search[0].pageid}`;
 
-        const style = frame.parentElement.parentElement.style
-        // style.display = "block";
-        style.opacity = "1";
-        style.pointerEvents = "auto";
     }
 
 

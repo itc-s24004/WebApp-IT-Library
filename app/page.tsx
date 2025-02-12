@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function page() {
     return (
         <div>
+            <h1>ホーム</h1>
             <Link href="/library">library</Link>
             <br />
             <Link href="/drill">drill</Link>

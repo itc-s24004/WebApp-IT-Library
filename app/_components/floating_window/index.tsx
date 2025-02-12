@@ -1,6 +1,6 @@
 import React from "react";
 
-import FloatingWindowControl from "@/app/_client/floating_window_control"
+import FloatingWindowControl from "@/app/_client/window_control"
 
 
 type WindowProps = {

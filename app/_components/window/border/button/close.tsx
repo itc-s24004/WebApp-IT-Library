@@ -2,5 +2,5 @@ import style from "./index.module.css";
 
 
 export default function component() {
-    return <button className={`${style.button_icon} ${style.close}`}></button>
+    return <button className={`${style.button_icon} ${style.close}`} name="window_control_close"></button>
 }

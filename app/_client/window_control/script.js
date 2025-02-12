@@ -4,11 +4,28 @@
     // })
     const windows = document.getElementsByName("floating_window");
     windows.forEach(button => {
-        console.log(button)
+        // console.log(button)
         button.removeAttribute("name")
 
         const frame = button.parentElement
         const window = frame.parentElement;
+
+        /**@type {NodeListOf<HTMLElement>} */
+        const closeButtons = document.getElementsByName("window_control_close");
+        closeButtons.forEach(button => {
+            button.onclick = () => {
+                window.remove();
+            }
+        })
+        /**@type {NodeListOf<HTMLElement>} */
+        const minimizeButtons = document.getElementsByName("window_control_minimize");
+        minimizeButtons.forEach(button => {
+            button.onclick = () => {
+                const style = window.style
+                style.opacity = "0";
+                style.pointerEvents = "none";
+            }
+        })
         // console.log("=".repeat(20))
         // console.log(window);
         // console.log(frame);
