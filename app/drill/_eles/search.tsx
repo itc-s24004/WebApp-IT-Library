@@ -16,7 +16,7 @@ function SearchComponent() {
         if (q instanceof HTMLInputElement) {
             const params = new URLSearchParams();
             params.set("q", q.value.trim());
-            router.push(`/drill/search?${params.toString()}`);
+            router.push(`/drill?${params.toString()}`);
         }
     };
 

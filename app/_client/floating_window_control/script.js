@@ -9,18 +9,15 @@
 
         const frame = button.parentElement
         const window = frame.parentElement;
-        console.log("=".repeat(20))
-        console.log(window);
-        console.log(frame);
+        // console.log("=".repeat(20))
+        // console.log(window);
+        // console.log(frame);
 
         let move = false;
 
         //マウス
         frame.addEventListener("mousedown", () => {move=true});
-        frame.addEventListener("mouseup", () => {
-            move=false
-            console.log("up")
-        });
+        frame.addEventListener("mouseup", () => {move=false});
 
         frame.addEventListener("mousemove", (ev) => {
             if (move) {

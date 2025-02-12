@@ -97,12 +97,10 @@
 
 
 
-        console.log(label)
         label.innerText = `[ ${searchWords.join(",")} ]の検索結果`
 
         frame.src = `https://ja.wikipedia.org/w/index.php?curid=${res.query.search[0].pageid}`;
 
-        console.log(frame.parentElement)
         const style = frame.parentElement.parentElement.style
         // style.display = "block";
         style.opacity = "1";

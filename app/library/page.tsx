@@ -14,7 +14,7 @@ export default async function Page(q: {searchParams: {search?:string}}) {
 
     return(
         <>
-            <Search path="/library"></Search>
+            <Search path="/library" queryName="search"></Search>
             <h1>Qitta</h1>
             {res.map((e) => (
                 <>

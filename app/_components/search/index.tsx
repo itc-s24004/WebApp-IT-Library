@@ -5,7 +5,7 @@ import Script from "next/script";
 import React, { Suspense } from "react";
 
 
-function SearchComponent({path}: {path: string}) {
+function SearchComponent({path, queryName}: {path: string, queryName: string}) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -14,19 +14,18 @@ function SearchComponent({path}: {path: string}) {
         const q = e.currentTarget.elements.namedItem("q");
         if (q instanceof HTMLInputElement) {
             const params = new URLSearchParams();
-            params.set("search", q.value.trim());
+            params.set(queryName, q.value.trim());
             router.push(`${path}?${params.toString()}`);
         }
     };
 
     return (
         <>
-            <Script src="/test.js"></Script>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="q"
-                    defaultValue={searchParams.get("search") ?? undefined}
+                    defaultValue={searchParams.get(queryName) ?? undefined}
                     placeholder="キーワードを入力"
                 />
             </form>
@@ -34,10 +33,10 @@ function SearchComponent({path}: {path: string}) {
     );
 }
 
-export default function component({path}: {path: string}) {
+export default function component({path, queryName}: {path: string, queryName: string}) {
     return (
         <Suspense>
-            <SearchComponent path={path}/>
+            <SearchComponent path={path} queryName={queryName}/>
         </Suspense>
     );
 }

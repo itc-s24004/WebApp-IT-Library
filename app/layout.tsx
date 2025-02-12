@@ -13,6 +13,8 @@ import Script from "next/script";
 
 import Window, { WindowTemplate, WindowTemplateColor } from "@/app/_components/window"
 
+import Header from "@/app/_components/header"
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +30,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
                 <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></Script>
             </head>
             <body>
+                <Header></Header>
                 <div className="container">
                     <Boot></Boot>{/**Bootstrap */}
                     {/* <Test></Test> */}
