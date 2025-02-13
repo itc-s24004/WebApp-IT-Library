@@ -4,7 +4,6 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Popup from "@/app/_components/menu/popup"
-import Popup_frame from "@/app/_components/popup_frame"
 import Test from "@/app/_components/test"
 import Boot from "./Bootstrap"
 import FloatS from "@/app/_client/float_search"

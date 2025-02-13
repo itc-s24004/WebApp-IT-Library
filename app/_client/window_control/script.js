@@ -1,34 +1,37 @@
 ((() => {
-    // document.addEventListener("mousemove", (ev) => {
-    //     console.log(ev.pageX, ev.pageY);
-    // })
-    const windows = document.getElementsByName("floating_window");
-    windows.forEach(button => {
-        // console.log(button)
-        button.removeAttribute("name")
 
-        const frame = button.parentElement
+
+    /**ウィンドウ構成
+     * window* * * * * * * * * * * * * * * * * *
+     *                                         *
+     *   + frame + + + + + + + + + + + + + +   *
+     *   +   button...[flag]               +   *
+     *   + + + + + + + + + + + + + + + + + +   *
+     *                                         *
+     *   + content + + + + + + + + + + + + +   *
+     *   +   element...                    +   *
+     *   + + + + + + + + + + + + + + + + + +   *
+     *                                         *
+     * * * * * * * * * * * * * * * * * * * * * *
+     */
+
+    /**
+     * @type {HTMLElement[]}
+     */
+    const windows = [];
+
+
+    const flags = document.getElementsByName("floating_window");
+    flags.forEach(flag => {
+
+        const frame = flag.parentElement
         const window = frame.parentElement;
 
-        /**@type {NodeListOf<HTMLElement>} */
-        const closeButtons = document.getElementsByName("window_control_close");
-        closeButtons.forEach(button => {
-            button.onclick = () => {
-                window.remove();
-            }
-        })
-        /**@type {NodeListOf<HTMLElement>} */
-        const minimizeButtons = document.getElementsByName("window_control_minimize");
-        minimizeButtons.forEach(button => {
-            button.onclick = () => {
-                const style = window.style
-                style.opacity = "0";
-                style.pointerEvents = "none";
-            }
-        })
-        // console.log("=".repeat(20))
-        // console.log(window);
-        // console.log(frame);
+        windows.push(window);
+
+
+        window.setAttribute("name", "component_window");
+
 
         let move = false;
 
@@ -44,9 +47,7 @@
             }
         });
 
-        frame.addEventListener("mouseleave", () => {
-            move = false;
-        });
+        frame.addEventListener("mouseleave", () => {move = false});
 
 
         //タッチ
@@ -59,7 +60,50 @@
             window.style.top = `${touch.pageY - Rect.height/2}px`;
             window.style.left = `${touch.pageX - Rect.width/2}px`;
         });
+
+
+        flag.remove();
     });
+
+
+
+    //ボタン操作
+    /**@type {NodeListOf<HTMLElement>} */
+    const closeButtons = document.getElementsByName("window_control_close");
+    closeButtons.forEach(button => {
+        button.onclick = () => {
+            window.remove();
+            button.parentElement.parentElement.remove()
+        }
+    })
+    /**@type {NodeListOf<HTMLElement>} */
+    const minimizeButtons = document.getElementsByName("window_control_minimize");
+    minimizeButtons.forEach(button => {
+        button.onclick = () => {
+            const style = button.parentElement.parentElement.style
+            style.opacity = "0";
+            style.pointerEvents = "none";
+        }
+    });
+
+
+
+    window.addEventListener("resize", (ev) => {
+        console.log("resize")
+        const innerWidth = window.innerWidth;
+        const innerHeight = window.innerHeight;
+
+
+        windows.forEach(window => {
+            const Rect = window.getBoundingClientRect();
+            const {width, height} = Rect;
+
+            const style = window.style;
+
+            style.width = `${Math.min(width, innerWidth)}px`;
+            style.height = `${Math.min(height, innerHeight)}px`;
+        })
+    })
     
 
 }))();
