@@ -21,7 +21,7 @@ export default function component({id, label, customStyle, customLabelStyle, chi
     const labelStyle: React.CSSProperties = customLabelStyle || {}
     labelStyle.paddingLeft = "10px";
     labelStyle.userSelect = "none";
-    labelStyle.flex = "1"
+    labelStyle.flex = "1";
 
     return (
         <div style={style} id={`${id}_border`}>

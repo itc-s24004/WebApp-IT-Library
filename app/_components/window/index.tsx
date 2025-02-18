@@ -7,6 +7,7 @@ import CloseButton from "./border/button/close";
 import MinimizeButton from "./border/button/minimize";
 
 
+
 import Styles from "./index.module.css"
 
 export enum WindowTemplate {
@@ -42,10 +43,14 @@ export default function component({template, id, windowClass, label, children, c
     windowStyle.minHeight = "300px";
     windowStyle.border = "3px solid black";
     windowStyle.borderRadius = "20px";
+    windowStyle.borderBottomRightRadius = "0"
     windowStyle.overflow = "hidden"
 
     windowStyle.backgroundColor = "rgb(85, 85, 85)";
     windowStyle.color = "white";
+
+    windowStyle.pointerEvents = "none";
+    windowStyle.resize = "both";
 
 
     if (template == WindowTemplate.none) {

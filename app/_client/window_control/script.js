@@ -27,6 +27,8 @@
         const frame = flag.parentElement
         const window = frame.parentElement;
 
+        const content = window.children[1];
+
         windows.push(window);
 
 
@@ -36,10 +38,18 @@
         let move = false;
 
         //マウス
-        frame.addEventListener("mousedown", () => {move=true});
-        frame.addEventListener("mouseup", () => {move=false});
+        frame.addEventListener("mousedown", () => {
+            move=true;
+            content.style.pointerEvents = "none";
+        });
+        document.addEventListener("mouseup", () => {
+            if (move) {
+                move=false
+                content.style.pointerEvents = "auto";
+            }
+        });
 
-        frame.addEventListener("mousemove", (ev) => {
+        document.addEventListener("mousemove", (ev) => {
             if (move) {
                 const Rect = window.getBoundingClientRect();
                 window.style.top = `${Rect.top + ev.movementY}px`;
@@ -47,14 +57,31 @@
             }
         });
 
-        frame.addEventListener("mouseleave", () => {move = false});
+        document.addEventListener("mouseleave", () => {
+            if (move) {
+                move = false;
+                console.log("leave")
+                content.style.pointerEvents = "auto";
+            }
+        });
+
+        // window.addEventListener("mouseover", () => {
+        //     move = false;
+        // })
 
 
         //タッチ
-        frame.addEventListener("touchstart", () => {move=true});
-        frame.addEventListener("touchend", () => {move=false});
+        frame.addEventListener("touchstart", () => {
+            move=true;
+            console.log("touch")
+        });
+        frame.addEventListener("touchend", () => {
+            move=false;
+            console.log("touch")
+        });
 
         frame.addEventListener("touchmove", (ev) => {
+            console.log("touch")
             const Rect = frame.getBoundingClientRect();
             const touch = ev.targetTouches[0];
             window.style.top = `${touch.pageY - Rect.height/2}px`;
@@ -83,8 +110,10 @@
             const style = button.parentElement.parentElement.style
             style.opacity = "0";
             style.pointerEvents = "none";
+            button.parentElement.parentElement.children[1].style.pointerEvents = "none"
         }
     });
+
 
 
 

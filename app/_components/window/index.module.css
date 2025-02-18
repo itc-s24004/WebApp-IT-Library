@@ -1,6 +1,7 @@
 .window_main {
     transition: opacity 0.5s;
     user-select: none;
+    border-bottom-right-radius: 0;
 }
 
 
@@ -8,4 +9,15 @@
     .window_main {
         position: static;
     }
+}
+
+.window_main::before{
+    position: absolute;
+    content: '';
+    right: -15px;
+    bottom: -15px;
+    border-width: 0 30px 30px 0;
+    border-style: solid;
+    border-color: #ffdb88 transparent;
+    transform: rotate(45deg);
 }

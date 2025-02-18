@@ -41,7 +41,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
                         <Popup_frame id="popup_iframe" customClass="" style={{width: "100%", height: "100%"}}></Popup_frame>
                     </FloatingWindow> */}
                     <Window id="floating_search_window" template={WindowTemplate.floating} templateColor={WindowTemplateColor.monochrome} customWindowStyle={{opacity: 0, pointerEvents: "none"}}>
-                        <iframe src="" id="popup_iframe" style={{width: "100%", flex:1}}></iframe>
+                        <iframe src="" id="popup_iframe" style={{width: "100%", flex:1, margin: "0px"}}></iframe>
                         {/* <Popup_frame id="popup_iframe" customClass="" style={{width: "100%", height: "100%"}}></Popup_frame> */}
                     </Window>
                     {children}

@@ -27,7 +27,7 @@
                     PopButton.style.opacity = "1";
                     PopStyle.pointerEvents = "auto";
                     const PopRect = PopButton.getBoundingClientRect();
-                    style.top = `${ev.pageY + PopRect.height/2 - 20}px`;
+                    style.top = `${ev.pageY + 20}px`;
                     style.left = `${ev.pageX - PopRect.width/2}px`
                     return
 
@@ -55,7 +55,7 @@
                     PopStyle.pointerEvents = "auto";
                     const PopRect = PopButton.getBoundingClientRect();
                     const touch = ev.touches[0];
-                    style.top = `${touch.pageY + PopRect.height/2 - 20}px`;
+                    style.top = `${touch.pageY + 20}px`;
                     style.left = `${touch.pageX - PopRect.width/2}px`
                     return
                 }
@@ -70,7 +70,7 @@
         
     }
 
-    PopButton.onclick = async () => {
+    PopButton.onclick = async (ev) => {
         PopButton.style.opacity = "0";
         PopStyle.pointerEvents = "none";
 
@@ -89,6 +89,15 @@
         style.opacity = "1";
         style.pointerEvents = "auto";
         label.innerText = "検索中..."
+
+
+
+        console.log(frame.parentElement.parentElement)
+        const rect = frame.parentElement.parentElement.getBoundingClientRect();
+        style.top = `${window.innerHeight/2 - rect.height/2}px`;
+        style.left = `${window.innerWidth/2 - rect.width/2}px`
+
+
         /**
          * @type {import("../../_API_Modules/Wikipedia").WikiSearchResponse}
          */

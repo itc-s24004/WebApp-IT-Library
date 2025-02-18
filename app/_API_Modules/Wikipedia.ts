@@ -30,6 +30,7 @@ export const wikiSearch = async (text: string, limit: number): Promise<WikiSearc
         if (res.status == 200) {
             return await res.json();
         } else {
+            console.log(res.status);
             // return {
             //     query: {
             //         pages: {}
