@@ -4,13 +4,18 @@ import Link from "next/link";
 
 export default function page() {
     return (
-        <div>
-            <h1>ホーム</h1>
-            <Link href="/library">library</Link>
-            <br />
-            <Link href="/drill">drill</Link>
-        </div>
-
+        <>
+            <div className="text-center">
+                <h1>ホーム</h1>
+                <Link href="/drill" style={{textDecoration: "none"}}>
+                    <button type="button" className="btn btn-primary btn-lg">問題集</button>
+                </Link>
+                <Link href="/library" style={{textDecoration: "none"}}>
+                    <button type="button" className="btn btn-primary btn-lg pt-10">検索</button>
+                </Link>
+            </div>
+        </>
+        
 
         // <div className="container">
         //     <div className="row justify-content-center">

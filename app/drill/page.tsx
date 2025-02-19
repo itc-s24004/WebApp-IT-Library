@@ -16,7 +16,7 @@ export default async function Page({searchParams}: searchQuery) {
     // console.log(data);
     return(
         <>
-            <h1>drill search</h1>
+            <h1 className="text-center">drill search</h1>
             <Search path="/drill" queryName="q"></Search>
             {data.contents.map(d => (
                 <>
